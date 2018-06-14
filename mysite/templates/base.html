@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HOME</title>
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"/>
+</head>
+<body>
+{% if user.is_authenticated %}
+        <form class="well">
+	 <a href="my_app/show/">Marksheet</a>
+	 &nbsp;
+         <a href="my_app/twitter/">Get_Tweets</a>
+	 &nbsp;
+         <a href="my_app/converter/">Currency_Converter</a>
+	 &nbsp;
+         <a href="my_app/rssreader/">RSS Reader</a>
+	 &nbsp;
+	 <a href="my_app/chatroom/">ChaT_RooM</a>
+	 &nbsp;
+         <a href="{% url 'logout' %}" style="float: right;">logout</a>
+	</form>
+	<script src="js/bootstrap.js"></script>
+{% else %}
+        <form class="well">
+	 <a href="my_app/show/">Marksheet</a>
+         &nbsp;
+	 <a href="my_app/twitter/">Get_Tweets</a>
+	 &nbsp;
+	 <a href="my_app/converter/">Currency_Converter</a>
+	 &nbsp;
+	 <a href="my_app/rssreader/">RSS Reader</a>
+	 &nbsp;
+	 <a href="my_app/chatroom/">ChaT_RooM</a>
+	 &nbsp;
+         <a href="{% url 'login' %}" style="float: right;">Login</a>
+         <a href="{% url 'signup' %}" style="float: right;">SignUp-</a>
+	 &emsp;
+	</form>
+	<script src="js/bootstrap.js"></script>
+{% endif %}
+
+  <meta charset="utf-8">
+  <h1 align="center">WELCOME TO MY APP</h1>
+  <p align="center"> Click on marksheet to enjoy marksheet funtioning</p>
+  <p align="center"> Click on Get_Tweets to see the tweets of any user from twitter</p>
+  <p align="center"> Click on Currency_Converter for currency conversion task</p>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

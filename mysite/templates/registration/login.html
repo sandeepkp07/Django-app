@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>Please Enter valid details to complete your login</p>
+
+
+
+
+
+
+ <h1 align="Left" width="48" height="48">LOGIN</h1> 
+<form class="well" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
+{% endblock %}
+</body>
+</html>
+
