@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RSS READER</title>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"/>
+
+</head>
+<body>
+
+       <form class="well">
+	 <a href="/">Home</a>
+	 {% if user.is_authenticated %}
+	  <a href="{% url 'logout' %}" style="float: right;">logout</a>
+	 {% else %}
+	  <a href="{% url 'login' %}" style="float: right;">Login</a>
+         {% endif %}
+       </form>
+
+<h1>RSS READER</h1>
+{% if user.is_authenticated %}
+	<form method="POST">{% csrf_token %}
+	 {{form.as_p}}
+	 <button type="submit">Submit</button>
+	</form>
+
+	<h2>{{Head}}</h2>
+  <ol>
+    {%for i in print%}	
+     <li>{{i}}</li>
+     <p>________________________</p>
+    {%endfor%}
+  </ol>
+{% else %}
+ <p>PLEASE LOGIN</p>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,104 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+    
+<meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>MARKSHEET</title>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"/>
+</head>
+<body>
+{% if user.is_authenticated %}
+
+ 
+ <form class="well">
+	 <a href="/">Home</a>
+	 &nbsp;
+	 <a href="add/">Add</a>
+         <a href="{% url 'logout' %}" style="float: right;">logout</a>
+	</form>
+	<script src="js/bootstrap.js"></script>
+
+<h1 align="center">MARKSHEET</h1>
+    
+
+<div class="">
+  
+         <h2></h2> 
+  <table class="table table-bordered">
+
+    <thead>
+      <tr>
+        <th>slno:</th>
+        <th>Name</th>
+        <th>Marks</th>
+        <th>Delete</th>
+       
+      </tr>
+    </thead>
+{%for item in leaderboard%}
+    <tbody>
+
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{item.Name}}</td>
+        <td>{{item.Marks}}</td>
+        <td><form action="{% url 'delete' pk=item.id %}" method="POST">{%csrf_token%}<input type="submit" value="delete" /></form> </td>
+      </tr>
+
+    </tbody>
+    {% endfor %}
+  </table>
+  <ul>
+  <li> Click Add to add new student.</li>
+  <li>You can't delete others entry.</li>
+  </ul> 
+
+
+{% else %}
+
+<form class="well">
+	 <a href="/">Home</a>
+	 &nbsp;
+         <a href="{% url 'login' %}" style="float: right;">Login</a>
+	</form>
+	<script src="js/bootstrap.js"></script>
+
+    
+<h1 align="center">MARKSHEET</h1>
+    
+
+<div class="container">
+  
+         <h2></h2> 
+ <table class="table table-bordered">
+
+    <thead>
+      <tr>
+        <th>slno:</th>
+        <th>Name</th>
+        <th>Marks</th>
+        
+       
+      </tr>
+    </thead>
+{%for item in leaderboard%}
+    <tbody>
+
+      <tr>
+        <td>{{ forloop.counter }}
+        <td>{{item.Name}}</td>
+        <td>{{item.Marks}}</td>
+        
+      </tr>
+
+    </tbody>
+    {% endfor %}
+  </table>
+<p>Please login to enjoy all features...</p>
+{% endif %}
+</div>
+
+
+

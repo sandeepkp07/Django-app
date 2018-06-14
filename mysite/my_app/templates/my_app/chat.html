@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Chat room</title>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"/>
+
+</head>
+<body>
+
+   <form class="well">
+	 <a href="/">Home</a>
+   </form>
+
+   <h1>ChaT RooM</h1>
+    <form method="POST">{% csrf_token %}
+	{{form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+{{print}}
+</body>
+</html>

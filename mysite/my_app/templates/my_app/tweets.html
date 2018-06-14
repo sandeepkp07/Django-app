@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tweets</title>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"/>
+</head>
+
+<body>
+ <form class="well">
+	 <a href="/">Home</a>
+	</form>
+
+
+
+    <h1>TWEETS</h1>
+    <form method="POST">
+        {% csrf_token %}
+{{form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+{{TOP}}
+    <ol>
+    {%for i in Tweet%}
+     <li> {{i}} </li>
+    {%endfor%}
+    </ol>
+
+</body>
+
+</html>

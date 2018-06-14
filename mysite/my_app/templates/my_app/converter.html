@@ -1,0 +1,28 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Converter</title>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+</head>
+<body>
+
+ <form class="well">
+	 <a href="/">Home</a>
+ </form>
+ 
+<h1>{{ title }}</h1>
+<form method="POST" >{% csrf_token %} 
+    <p>Convert From:{{form.convert_from}}</p>
+    <p>Amount:{{form.amount}}</p>
+    <p>Convert To:{{form.convert_to}}</p>  
+   
+        
+  
+<input class="btn btn-info" align="center" type="submit" value ="Submit">
+</form>
+<p>{{print}}</p>
+</body>
+</html>
